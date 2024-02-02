@@ -1,0 +1,1108 @@
+{
+	"info": {
+		"_postman_id": "77bfa97b-182d-4725-ad1f-dc92d36a9e2a",
+		"name": "Estudo Automação Go Rest Api - Monitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11159547",
+		"_collection_link": "https://grey-equinox-356932.postman.co/workspace/Workspace~7f625ed2-4efd-4ec8-83e2-fa9dcf07054f/collection/11159547-77bfa97b-182d-4725-ad1f-dc92d36a9e2a?action=share&source=collection_link&creator=11159547"
+	},
+	"item": [
+		{
+			"name": "Usuários",
+			"item": [
+				{
+					"name": "Criar Usuário, Post e Comentário",
+					"item": [
+						{
+							"name": "Criar Usuário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"const resposta = pm.response.json();\r",
+											"pm.environment.set(\"id_usuario\",resposta.id);\r",
+											"\r",
+											"pm.test (\"Validar nome criado\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"Matheus Henrique Ale\");\r",
+											"});\r",
+											"\r",
+											"pm.test (\"Validar criação do sexo\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"male\");\r",
+											"});\r",
+											"\r",
+											"pm.test (\"Validar E-mail criado\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"matheus.santosale@gmail.com\");\r",
+											"});\r",
+											"\r",
+											"pm.test (\"Validar status\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"active\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"//pm.test (\"Validar E-mail criado\", ()=> { \r",
+											"//const responseJson = pm.json();\r",
+											"//pm.expect(response.json.email).to.eql(\"avante.gomes.g@cce.com\");\r",
+											"//pm.test (\"Validar nome Sexo\", () => { \r",
+											"//const responseJson = pm.json();\r",
+											"//pm.expect(response.json.gender).to.eql(\"male\");\r",
+											"//});\r",
+											"//pm.test (\"Validar E-mail criado\", ()=> { \r",
+											"//const responseJson = pm.json();\r",
+											"//pm.expect(response.json.email).to.eql(\"avante.gomes.g@cce.com\");\r",
+											"//});\r",
+											"//pm.test (\"Validar Status criado\", ()=> {\r",
+											"//const responseJson = pm.json();\r",
+											"//pm.expect(response.json.status).to.eql(\"active\");\r",
+											"//});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "id_teste",
+										"value": "{{id_usuario}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\": \"Matheus Henrique Ale\",\r\n\"gender\": \"male\",\r\n\"email\": \"matheus.santosale@gmail.com\",\r\n\"status\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/users",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Criar Usuário",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "id_teste",
+												"value": "{{id_usuario}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\"name\": \"Vanessa Gomes\",\r\n\"gender\": \"female\",\r\n\"email\": \"vanessa.gomes.g@jajajaja.com\",\r\n\"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_HML}}/public/v2/users",
+											"host": [
+												"{{URL_HML}}"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 07 Apr 2022 19:48:39 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "strict-origin-when-cross-origin"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "90"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "88"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1"
+										},
+										{
+											"key": "Location",
+											"value": "https://gorest.co.in/public/v2/users/6073"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"40ecc73e3fbf1504ab4ce31f0cf5fcea\""
+										},
+										{
+											"key": "Cache-Control",
+											"value": "max-age=0, private, must-revalidate"
+										},
+										{
+											"key": "X-Request-Id",
+											"value": "df025362-dc32-4dc8-9f42-d971360d05a6"
+										},
+										{
+											"key": "X-Runtime",
+											"value": "0.024409"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000; includeSubDomains"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 6073,\n    \"name\": \"Vanessa Gomes\",\n    \"email\": \"vanessa.gomes.g@jajajaja.com\",\n    \"gender\": \"female\",\n    \"status\": \"active\"\n}"
+								},
+								{
+									"name": "Criar Usuário",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "id_teste",
+												"value": "{{id_usuario}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\"name\": \"Matheus Henrique Ale\",\r\n\"gender\": \"male\",\r\n\"email\": \"matheus.santosale@gmail.com\",\r\n\"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_HML}}/public/v2/users",
+											"host": [
+												"{{URL_HML}}"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Criar Posts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201 ao criar Post\", function () {\r",
+											"pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test(\"Criação de Post usando id usuário\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.id).to.eql, '{{id_post}}';\r",
+											"});\r",
+											"pm.test(\"Criação de Post campo: User_id\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.user_id).to.eql, '{{id_post}}';\r",
+											"});\r",
+											"pm.test(\"Comparação de criação Title Post\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.title).to.eql(\"TESTE DE CRIAÇÃO DO POST ATRAVES DA API GO REST via Monoitor no Postman.\");\r",
+											"});\r",
+											"pm.test(\"Comparação de criação do Body no Post\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.body).to.eql(\"Dados incluído no body no Post via api pelo Monitor da api Go rest via automação de API.\");\r",
+											"});\r",
+											"\r",
+											"const resposta = pm.response.json();\r",
+											"pm.environment.set(\"Post_Id\",resposta.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"id\": {{id_post}},\r\n\"user_id\": {{id_post}},\r\n\"title\": \"TESTE DE CRIAÇÃO DO POST ATRAVES DA API GO REST via Monoitor no Postman.\",\r\n\"body\": \"Dados incluído no body no Post via api pelo Monitor da api Go rest via automação de API.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/posts",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Criar Comentário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"pm.response.to.have.status(201);\r",
+											"});\r",
+											"const resposta = pm.response.json();\r",
+											"pm.environment.set(\"Id_coment\",resposta.id);\r",
+											"\r",
+											"\r",
+											"pm.test(\"Criação de Post usando ID\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.id).to.eql, '{{Id_coment}}';\r",
+											"});\r",
+											"\r",
+											"//const resposta = pm.response.json();\r",
+											"//pm.environment.set(\"Id_Post_coment\",resposta.post_id);\r",
+											"\r",
+											"pm.test(\"Criação de Post campo: post_id\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.post_id).to.eql,'{{Id_Post_coment}}';\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validar nome criado\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.name).to.eql,(\"Matheus Henrique Ale\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validar email criado\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.email).to.eql,(\"matheus.santosale@gmail.com\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validar email criado\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.body).to.eql,(\"Teste de automação de comentários monitor Postman Go Rest Api.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"id\": \"{{id_usuario}}\",\r\n\"post_id\": \"{{Post_Id}}\",\r\n\"name\": \"Matheus Henrique Ale\",\r\n\"email\": \"matheus.santosale@gmail.com\",\r\n\"body\": \"Teste de automação de comentários monitor Postman Go Rest Api.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/comments",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Buscar Usuário, Post e Comentário",
+					"item": [
+						{
+							"name": "Buscar Usuário após criação",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test (\"Validar retorno nome\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"Matheus Henrique Ale\")\r",
+											"});\r",
+											"pm.test(\"teste comparação Sexo\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.gender).to.eql(\"male\");\r",
+											"});\r",
+											"pm.test(\"teste comparação E-mail\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.email).to.eql(\"matheus.santosale@gmail.com\");\r",
+											"});\r",
+											"pm.test(\"teste comparação Status\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.status).to.eql(\"active\");\r",
+											"});\r",
+											"//pm.test (\"Validar retorno ID\", function() {\r",
+											"//pm.expect(response.json.id).to.eql ({{id_usuario}},)\r",
+											"//});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/users/{{id_usuario}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users",
+										"{{id_usuario}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Buscar Usuário",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_HML}}/public/v2/users/{{id_usuario}}",
+											"host": [
+												"{{URL_HML}}"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"{{id_usuario}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 07 Apr 2022 19:49:03 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "strict-origin-when-cross-origin"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "90"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "89"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"40ecc73e3fbf1504ab4ce31f0cf5fcea\""
+										},
+										{
+											"key": "Cache-Control",
+											"value": "max-age=0, private, must-revalidate"
+										},
+										{
+											"key": "X-Request-Id",
+											"value": "d8835ace-19e1-46aa-85f2-34588a3de5a4"
+										},
+										{
+											"key": "X-Runtime",
+											"value": "0.019409"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000; includeSubDomains"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 6073,\n    \"name\": \"Vanessa Gomes\",\n    \"email\": \"vanessa.gomes.g@jajajaja.com\",\n    \"gender\": \"female\",\n    \"status\": \"active\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Buscar Posts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validar consulta do Id\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.user_id).to.eql, '{{id_post}}';\r",
+											"});\r",
+											"pm.test(\"Validar consulta do id_usuario\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.user_id).to.eql, '{{id_usuario}}';\r",
+											"});\r",
+											"pm.test(\"Comparar retorno consulta do Title Post\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.title).to.eql(\"TESTE DE CRIAÇÃO DO POST ATRAVES DA API GO REST via Monoitor no Postman.\");\r",
+											"});\r",
+											"pm.test(\"Comparar retorno consulta do Body no Post\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.body).to.eql(\"Dados incluído no body no Post via api pelo Monitor da api Go rest via automação de API.\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"//const resposta = pm.response.json();\r",
+											"//pm.environment.set(\"Post_Id\",resposta.id);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/posts/{{Post_Id}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"posts",
+										"{{Post_Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar comentário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validar consulta do ID\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.id).to.eql,'{{id_coments}}';\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validar consulta Post_ID criado\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.post_id).to.eql,'{{Id_Post_coment}}';\r",
+											"});\r",
+											"pm.test(\"Validar consulta nome criado\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.name).to.eql,(\"Matheus Henrique Ale\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validar consulta Email criado\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.email).to.eql,(\"matheus.santosale@gmail.com\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validar consulta Body criado\", () => {\r",
+											"const responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.body).to.eql,(\"Teste de automação de comentários monitor Postman Go Rest Api.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/comments/{{Id_coment}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"comments",
+										"{{Id_coment}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editar Usuário",
+					"item": [
+						{
+							"name": "Alterar Dados do Usuário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test (\"Validar nome criado\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"Matheus Henrique Santos Carvalho\");\r",
+											"});\r",
+											"\r",
+											"pm.test (\"Validar criação do sexo\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"male\");\r",
+											"});\r",
+											"\r",
+											"pm.test (\"Validar E-mail criado\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"matheus.santos.carvalho@gmail.com\");\r",
+											"});\r",
+											"\r",
+											"pm.test (\"Validar status\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"active\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\": \"Matheus Henrique Santos Carvalho\",\r\n\"gender\": \"male\",\r\n\"email\": \"matheus.santos.carvalho@gmail.com\",\r\n\"status\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/users/{{id_usuario}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users",
+										"{{id_usuario}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validar dados alterado com sucesso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test (\"Validar retorno nome\", function() {\r",
+											"pm.expect(pm.response.text()).to.include(\"Matheus Henrique Santos Carvalho\")\r",
+											"});\r",
+											"pm.test(\"teste comparação Sexo\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.gender).to.eql(\"male\");\r",
+											"});\r",
+											"pm.test(\"teste comparação E-mail\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.email).to.eql(\"matheus.santos.carvalho@gmail.com\");\r",
+											"});\r",
+											"pm.test(\"teste comparação Status\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.status).to.eql(\"active\");\r",
+											"});\r",
+											"//pm.test (\"Validar retorno ID\", function() {\r",
+											"//pm.expect(response.json.id).to.eql ({{id_usuario}},)\r",
+											"//});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/users/{{id_usuario}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users",
+										"{{id_usuario}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Excluir Usuário, Post e Comentário",
+					"item": [
+						{
+							"name": "Excluir Comentário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/comments/{{Id_coment}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"comments",
+										"{{Id_coment}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluir Posts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/posts/{{Post_Id}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"posts",
+										"{{Post_Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluir Usuário",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL_HML}}/public/v2/users/{{id_usuario}}",
+									"host": [
+										"{{URL_HML}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users",
+										"{{id_usuario}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Excluir Usuário",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_HML}}/public/v2/users/{{id_usuario}}",
+											"host": [
+												"{{URL_HML}}"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"{{id_usuario}}"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 07 Apr 2022 19:49:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "strict-origin-when-cross-origin"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "90"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "89"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache"
+										},
+										{
+											"key": "X-Request-Id",
+											"value": "d688c5b1-ee04-4552-b498-1582ebb14247"
+										},
+										{
+											"key": "X-Runtime",
+											"value": "0.021775"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000; includeSubDomains"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "ff3c5813a799bd6a971013a67495695b6286701f30fdeb79159d9c0b29386374",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 1800ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(1800);",
+					"});"
+				]
+			}
+		}
+	]
+}
